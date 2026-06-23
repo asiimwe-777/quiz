@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Quiz Master - Interactive Quiz App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>☕ Java Quiz Master</h1>
+            <p>Test your Java knowledge with random questions</p>
+        </header>
+
+        <!-- Start Screen -->
+        <div id="startScreen" class="screen active">
+            <div class="welcome-content">
+                <h2>Welcome to Java Quiz Master!</h2>
+                <p>This quiz contains 34 questions across 6 difficulty levels, from basics to advanced OOP concepts.</p>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <h3>34</h3>
+                        <p>Total Questions</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>6</h3>
+                        <p>Difficulty Levels</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>∞</h3>
+                        <p>Random Order</p>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary btn-large" onclick="startQuiz()">Start Quiz</button>
+            </div>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quizScreen" class="screen">
+            <div class="quiz-container">
+                <!-- Progress Bar -->
+                <div class="progress-section">
+                    <div class="progress-info">
+                        <span>Question <span id="currentQuestion">1</span> of <span id="totalQuestions">34</span></span>
+                        <span id="levelBadge" class="level-badge">Level 1</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div id="progressFill" class="progress-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <!-- Question -->
+                <div class="question-section">
+                    <h2 id="questionText" class="question-text"></h2>
+                </div>
+
+                <!-- Options -->
+                <div class="options-section">
+                    <div id="optionsContainer" class="options-container"></div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="navigation">
+                    <button class="btn btn-secondary" onclick="previousQuestion()" id="prevBtn" disabled>← Previous</button>
+                    <button class="btn btn-secondary" onclick="skipQuestion()" id="skipBtn">Skip</button>
+                    <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn" disabled>Next →</button>
+                </div>
+
+                <!-- Score -->
+                <div class="score-display">
+                    <span>Score: <strong id="scoreDisplay">0</strong> / <span id="answeredCount">0</span></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="resultsScreen" class="screen">
+            <div class="results-container">
+                <h2>Quiz Complete! 🎉</h2>
+                
+                <div class="score-circle">
+                    <div class="score-percentage" id="scorePercentage">0%</div>
+                    <div class="score-detail">
+                        <span id="finalScore">0</span> / <span id="finalTotal">0</span>
+                    </div>
+                </div>
+
+                <div class="performance-message" id="performanceMessage"></div>
+
+                <div class="results-stats">
+                    <div class="stat-row">
+                        <span>Correct Answers:</span>
+                        <strong id="correctCount">0</strong>
+                    </div>
+                    <div class="stat-row">
+                        <span>Incorrect Answers:</span>
+                        <strong id="incorrectCount">0</strong>
+                    </div>
+                    <div class="stat-row">
+                        <span>Skipped:</span>
+                        <strong id="skippedCount">0</strong>
+                    </div>
+                    <div class="stat-row">
+                        <span>Accuracy Rate:</span>
+                        <strong id="accuracyRate">0%</strong>
+                    </div>
+                </div>
+
+                <!-- Review Section -->
+                <div class="review-section">
+                    <h3>Review Your Answers</h3>
+                    <div id="reviewContainer" class="review-container"></div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="restartQuiz()">Take Quiz Again</button>
+                    <button class="btn btn-secondary" onclick="goHome()">Back to Home</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
