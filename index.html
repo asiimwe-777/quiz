@@ -12,10 +12,59 @@
         <header class="header">
             <h1>☕ Java Quiz Master</h1>
             <p>Test your Java knowledge with random questions</p>
+            <div class="header-auth" id="headerAuth"></div>
         </header>
 
+        <!-- Auth Screen (Sign In / Sign Up) -->
+        <div id="authScreen" class="screen active">
+            <div class="auth-container">
+                <div class="auth-toggle">
+                    <button class="tab-btn active" onclick="switchAuthMode('signin')">Sign In</button>
+                    <button class="tab-btn" onclick="switchAuthMode('signup')">Sign Up</button>
+                </div>
+
+                <!-- Sign In Form -->
+                <form id="signInForm" class="auth-form active" onsubmit="handleSignIn(event)">
+                    <h2>Welcome Back!</h2>
+                    <div class="form-group">
+                        <label for="signInEmail">Email</label>
+                        <input type="email" id="signInEmail" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signInPassword">Password</label>
+                        <input type="password" id="signInPassword" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-large">Sign In</button>
+                    <p class="auth-hint">Demo: Use any email/password</p>
+                </form>
+
+                <!-- Sign Up Form -->
+                <form id="signUpForm" class="auth-form" onsubmit="handleSignUp(event)">
+                    <h2>Create Account</h2>
+                    <div class="form-group">
+                        <label for="signUpName">Full Name</label>
+                        <input type="text" id="signUpName" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signUpEmail">Email</label>
+                        <input type="email" id="signUpEmail" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signUpPassword">Password</label>
+                        <input type="password" id="signUpPassword" placeholder="Enter password (min 6 chars)" minlength="6" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signUpConfirmPassword">Confirm Password</label>
+                        <input type="password" id="signUpConfirmPassword" placeholder="Confirm password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-large">Create Account</button>
+                    <p class="auth-hint">Your quiz progress will be saved</p>
+                </form>
+            </div>
+        </div>
+
         <!-- Start Screen -->
-        <div id="startScreen" class="screen active">
+        <div id="startScreen" class="screen">
             <div class="welcome-content">
                 <h2>Welcome to Java Quiz Master!</h2>
                 <p>This quiz contains 34 questions across 6 difficulty levels, from basics to advanced OOP concepts.</p>
@@ -36,6 +85,7 @@
                 </div>
 
                 <button class="btn btn-primary btn-large" onclick="startQuiz()">Start Quiz</button>
+                <button class="btn btn-secondary" onclick="viewStats()">View My Stats</button>
             </div>
         </div>
 
@@ -121,6 +171,15 @@
                     <button class="btn btn-primary" onclick="restartQuiz()">Take Quiz Again</button>
                     <button class="btn btn-secondary" onclick="goHome()">Back to Home</button>
                 </div>
+            </div>
+        </div>
+
+        <!-- Stats Screen -->
+        <div id="statsScreen" class="screen">
+            <div class="stats-container">
+                <h2>Your Statistics</h2>
+                <div id="statsContent" class="stats-content"></div>
+                <button class="btn btn-secondary" onclick="goHome()">Back to Home</button>
             </div>
         </div>
     </div>
